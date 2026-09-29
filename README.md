@@ -2,7 +2,7 @@
 
 A showcase of Dan's favourite independent shops, split into **Gifts**, **Food & Drink** and **Clothing**. Each card links straight through to the shop. Each card also recommends specific products from other shops (**"If you like this, try: …"**), and each pop-up has a row of similar shops.
 
-It's plain HTML, CSS and JavaScript, with no build step and no dependencies.
+It's plain HTML, CSS and JavaScript, with no build step and no dependencies. **Live site:** https://dancalladine.github.io/DansPicks/
 
 ## Running it locally
 
@@ -80,4 +80,4 @@ A shop's `similar` list is shown first. If it has fewer than three entries, the 
 
 ## Hosting
 
-The site is fully static, so it can be hosted for free on GitHub Pages (push the repo and enable Pages on the `main` branch), Netlify or Cloudflare Pages.
+The site is live at **https://dancalladine.github.io/DansPicks/**, served by GitHub Pages from the root of the `main` branch. Every push to `main` republishes it within a minute or two. Browsers may keep the old version for up to 10 minutes; a hard refresh (Ctrl+F5) shows the new one straight away.
