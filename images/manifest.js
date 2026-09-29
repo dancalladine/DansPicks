@@ -104,6 +104,9 @@ const IMAGES = {
     "file": "lockdown-liquor.png",
     "fit": "contain"
   },
+  "lorna-syson": {
+    "file": "lorna-syson.jpg"
+  },
   "maisie-and-murphy": {
     "file": "maisie-and-murphy.jpg"
   },
@@ -154,8 +157,14 @@ const IMAGES = {
   "peregrine-ashton-chore": {
     "file": "products/peregrine-ashton-chore.jpg"
   },
+  "potting-shed-soap": {
+    "file": "potting-shed-soap.jpg"
+  },
   "rila": {
     "file": "rila.jpg"
+  },
+  "rope-reborn": {
+    "file": "rope-reborn.jpg"
   },
   "scavenger": {
     "file": "scavenger.png",
