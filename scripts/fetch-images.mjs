@@ -20,7 +20,7 @@ const refetchAll = process.argv.includes("--all");
 
 const UA =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130 Safari/537.36";
-const EXT_FOR_TYPE = { "image/jpeg": "jpg", "image/png": "png", "image/webp": "webp", "image/gif": "gif", "image/avif": "avif" };
+const EXT_FOR_TYPE = { "image/jpeg": "jpg", "image/jpg": "jpg", "image/png": "png", "image/webp": "webp", "image/gif": "gif", "image/avif": "avif" };
 // og:images that are really logos look better shown whole on white than cropped.
 const LOGO_HINT = /logo|icon|monogram|pad_color|tag_transparent|social-share/i;
 

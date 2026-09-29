@@ -5,14 +5,26 @@ const IMAGES = {
     "file": "annotate-create.png",
     "fit": "contain"
   },
+  "arbon-socks": {
+    "file": "arbon-socks.jpg"
+  },
   "cake-coffee": {
     "file": "cake-coffee.jpg"
+  },
+  "cats-protection-tees": {
+    "file": "cats-protection-tees.jpg"
+  },
+  "chocolatia": {
+    "file": "chocolatia.jpg"
   },
   "community-clothing-coats": {
     "file": "community-clothing-coats.jpg"
   },
   "community-clothing-socks": {
     "file": "community-clothing-socks.jpg"
+  },
+  "dave-and-dandelion": {
+    "file": "dave-and-dandelion.jpg"
   },
   "dirtbags-rope-belt": {
     "file": "dirtbags-rope-belt.jpg"
@@ -24,33 +36,92 @@ const IMAGES = {
     "file": "dutch-tile-project.png",
     "fit": "contain"
   },
+  "edmunds-cocktails": {
+    "file": "edmunds-cocktails.jpg",
+    "fit": "contain"
+  },
   "elvis-and-kresse": {
     "file": "elvis-and-kresse.jpg"
   },
   "gra-chocolates": {
     "file": "gra-chocolates.jpg"
   },
+  "hellenic-deli": {
+    "file": "hellenic-deli.webp",
+    "fit": "contain"
+  },
   "jack-clementine": {
     "file": "jack-clementine.jpg"
+  },
+  "kinshipped": {
+    "file": "kinshipped.webp",
+    "fit": "contain"
   },
   "lockdown-liquor": {
     "file": "lockdown-liquor.png",
     "fit": "contain"
   },
+  "maisie-and-murphy": {
+    "file": "maisie-and-murphy.jpg"
+  },
+  "mark-and-fold": {
+    "file": "mark-and-fold.png",
+    "fit": "contain"
+  },
+  "melt-chocolates": {
+    "file": "melt-chocolates.jpg"
+  },
+  "moxon": {
+    "file": "moxon.jpg"
+  },
   "neon-magpie": {
     "file": "neon-magpie.jpg"
+  },
+  "nio-cocktails": {
+    "file": "nio-cocktails.png",
+    "fit": "contain"
   },
   "pavilion-paper": {
     "file": "pavilion-paper.jpg"
   },
+  "peregrine": {
+    "file": "peregrine.png"
+  },
   "rila": {
     "file": "rila.jpg"
+  },
+  "scavenger": {
+    "file": "scavenger.png",
+    "fit": "contain"
   },
   "shawncraft": {
     "file": "shawncraft.jpg"
   },
+  "talking-tables": {
+    "file": "talking-tables.jpg",
+    "fit": "contain"
+  },
+  "the-good-soap": {
+    "file": "the-good-soap.jpg"
+  },
+  "tiles-of-stow": {
+    "file": "tiles-of-stow.jpg"
+  },
+  "truestart": {
+    "file": "truestart.jpg"
+  },
   "viri-cotton": {
     "file": "viri-cotton.png",
     "fit": "contain"
+  },
+  "wawwa": {
+    "file": "wawwa.png",
+    "fit": "contain"
+  },
+  "wild-and-myrtle": {
+    "file": "wild-and-myrtle.jpg"
+  },
+  "wood-row": {
+    "file": "wood-row.jpg"
   }
 };
