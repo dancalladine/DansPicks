@@ -1,4 +1,4 @@
-// Downloads each shop's preview image (its og:image) into images/ and writes
+// Downloads each shop's and product's preview image (its og:image) into images/ and writes
 // images/manifest.js, which the site reads to find them.
 //
 //   node scripts/fetch-images.mjs          fetch images for shops that don't have one yet
@@ -24,9 +24,11 @@ const EXT_FOR_TYPE = { "image/jpeg": "jpg", "image/jpg": "jpg", "image/png": "pn
 // og:images that are really logos look better shown whole on white than cropped.
 const LOGO_HINT = /logo|icon|monogram|pad_color|tag_transparent|social-share/i;
 
-async function loadShops() {
+// Shops and products share one manifest; product images live in images/products/.
+async function loadItems() {
   const src = await readFile(path.join(root, "data.js"), "utf8");
-  return new Function(`${src}; return SHOPS;`)();
+  const { SHOPS, PRODUCTS } = new Function(`${src}; return { SHOPS, PRODUCTS: typeof PRODUCTS === "undefined" ? [] : PRODUCTS };`)();
+  return [...SHOPS, ...PRODUCTS.map((product) => ({ ...product, dir: "products/" }))];
 }
 
 async function loadManifest() {
@@ -62,14 +64,14 @@ async function fetchImage(shop) {
   const ext = EXT_FOR_TYPE[type];
   if (!ext) throw new Error(`unexpected image type ${type}`);
 
-  const file = `${shop.id}.${ext}`;
+  const file = `${shop.dir ?? ""}${shop.id}.${ext}`;
   await writeFile(path.join(imagesDir, file), Buffer.from(await res.arrayBuffer()));
   return { file, ...(LOGO_HINT.test(imageUrl) ? { fit: "contain" } : {}) };
 }
 
-const shops = await loadShops();
+const shops = await loadItems();
 const manifest = await loadManifest();
-await mkdir(imagesDir, { recursive: true });
+await mkdir(path.join(imagesDir, "products"), { recursive: true });
 
 const todo = shops.filter(
   (shop) => refetchAll || !manifest[shop.id] || !existsSync(path.join(imagesDir, manifest[shop.id].file)),

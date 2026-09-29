@@ -3,6 +3,7 @@
 // pick: false -> a suggested shop, shown only in "you might also like" rows.
 // similar     -> ids of shops to suggest alongside this one (topped up with
 //                other picks that share tags if there are fewer than 3).
+// products    -> ids from PRODUCTS (bottom of file) to recommend with this pick.
 // price       -> rough guide to a typical item: £ (under £20), ££ (£20–£60), £££ (£60+).
 
 const CATEGORIES = {
@@ -23,6 +24,7 @@ const SHOPS = [
     tags: ["soap", "bath", "handmade", "natural", "plastic-free"],
     pick: true,
     similar: ["the-good-soap", "wild-and-myrtle", "potting-shed-soap"],
+    products: ["good-soap-rose-salt-bar", "good-soap-sea-salt-trio"],
   },
   {
     id: "neon-magpie",
@@ -34,6 +36,7 @@ const SHOPS = [
     tags: ["soap", "bath", "beauty", "gift-shop"],
     pick: true,
     similar: ["the-good-soap", "wild-and-myrtle"],
+    products: ["good-soap-lip-balm-trio", "good-soap-travel-tin"],
   },
   {
     id: "annotate-create",
@@ -45,6 +48,7 @@ const SHOPS = [
     tags: ["stationery", "notebook", "design"],
     pick: true,
     similar: ["mark-and-fold", "kinshipped", "moxon"],
+    products: ["mark-and-fold-classic-notebook", "moxon-karst-hardcover"],
   },
   {
     id: "pavilion-paper",
@@ -56,6 +60,7 @@ const SHOPS = [
     tags: ["tableware", "hosting", "design", "paper"],
     pick: true,
     similar: ["talking-tables", "moxon"],
+    products: ["talking-tables-eucalyptus-napkins", "talking-tables-partridge-napkins"],
   },
   {
     id: "dutch-tile-project",
@@ -66,7 +71,8 @@ const SHOPS = [
     price: "££",
     tags: ["ceramics", "homeware", "design"],
     pick: true,
-    similar: ["tiles-of-stow"],
+    similar: ["tiles-of-stow", "doodlepippin"],
+    products: ["doodlepippin-delft-tile", "doodlepippin-tile-placemat"],
   },
   {
     id: "jack-clementine",
@@ -78,6 +84,7 @@ const SHOPS = [
     tags: ["cats", "personalised", "christmas", "homeware"],
     pick: true,
     similar: ["dave-and-dandelion", "lorna-syson"],
+    products: ["dave-and-dandelion-cat-ornament", "dave-and-dandelion-cat-mug"],
   },
   {
     id: "elvis-and-kresse",
@@ -89,6 +96,7 @@ const SHOPS = [
     tags: ["upcycled", "bags", "accessories", "sustainable"],
     pick: true,
     similar: ["scavenger"],
+    products: ["scavenger-arrow-belt", "scavenger-monkey-charm"],
   },
 
   // ---------- Food & Drink ----------
@@ -102,6 +110,7 @@ const SHOPS = [
     tags: ["coffee", "drinks", "cans"],
     pick: true,
     similar: ["truestart"],
+    products: ["truestart-iced-coffee-pack", "truestart-iced-coffee-glass"],
   },
   {
     id: "lockdown-liquor",
@@ -113,6 +122,7 @@ const SHOPS = [
     tags: ["cocktails", "drinks", "alcohol"],
     pick: true,
     similar: ["edmunds-cocktails", "nio-cocktails"],
+    products: ["edmunds-espresso-martini", "nio-bestseller-box"],
   },
   {
     id: "gra-chocolates",
@@ -124,6 +134,7 @@ const SHOPS = [
     tags: ["chocolate", "handmade", "treats"],
     pick: true,
     similar: ["melt-chocolates", "wood-row", "chocolatia"],
+    products: ["wood-row-seasonal", "wood-row-hazelnut-bar"],
   },
   {
     id: "rila",
@@ -135,6 +146,7 @@ const SHOPS = [
     tags: ["pantry", "deli", "condiments"],
     pick: true,
     similar: ["hellenic-deli"],
+    products: ["hellenic-pomegranate-balsamic", "hellenic-fir-honey"],
   },
 
   // ---------- Clothing ----------
@@ -148,6 +160,7 @@ const SHOPS = [
     tags: ["cats", "t-shirts", "graphic"],
     pick: true,
     similar: ["maisie-and-murphy", "cats-protection-tees"],
+    products: ["maisie-cat-walking-tee", "maisie-spring-cat-tee"],
   },
   {
     id: "shawncraft",
@@ -159,6 +172,7 @@ const SHOPS = [
     tags: ["t-shirts", "graphic"],
     pick: true,
     similar: ["maisie-and-murphy", "cats-protection-tees"],
+    products: ["maisie-cat-stretching-tee", "maisie-cat-silhouette-sweat"],
   },
   {
     id: "dirtbags-rope-belt",
@@ -170,6 +184,7 @@ const SHOPS = [
     tags: ["upcycled", "climbing", "accessories", "sustainable"],
     pick: true,
     similar: ["scavenger", "rope-reborn"],
+    products: ["scavenger-gecko-belt", "scavenger-nut-keyring"],
   },
   {
     id: "community-clothing-coats",
@@ -181,6 +196,7 @@ const SHOPS = [
     tags: ["british-made", "jackets", "menswear", "sustainable"],
     pick: true,
     similar: ["wawwa", "peregrine", "community-clothing-socks"],
+    products: ["peregrine-ashton-chore", "wawwa-roam-raglan"],
   },
   {
     id: "community-clothing-socks",
@@ -192,6 +208,7 @@ const SHOPS = [
     tags: ["british-made", "socks", "sustainable"],
     pick: true,
     similar: ["arbon-socks", "community-clothing-coats"],
+    products: ["arbon-stripy-socks", "arbon-cumbria-walker"],
   },
 
   // ---------- Suggested shops (only shown in "you might also like") ----------
@@ -459,4 +476,84 @@ const SHOPS = [
     pick: false,
     similar: [],
   },
+  {
+    id: "doodlepippin",
+    name: "DoodlePippin",
+    url: "https://www.doodlepippin.co.uk/",
+    category: "gifts",
+    blurb: "Hand-printed tiles, placemats and coasters, made in Reigate",
+    price: "££",
+    tags: ["ceramics", "homeware", "design"],
+    pick: false,
+    similar: [],
+  },
+];
+
+// Specific products to recommend. Each pick lists product ids in `products`;
+// `shop` is the id of the shop that sells it (from SHOPS above).
+const PRODUCTS = [
+  { id: "good-soap-rose-salt-bar", name: "Rose Salt Soap Bar", shop: "the-good-soap", price: "£4.99",
+    url: "https://the-good-soap.co.uk/products/salt-soap-with-rose" },
+  { id: "good-soap-sea-salt-trio", name: "Sea Salt Soap Trio", shop: "the-good-soap", price: "£13.65",
+    url: "https://the-good-soap.co.uk/products/sea-salt-soap-gift-set" },
+  { id: "good-soap-lip-balm-trio", name: "Lip Balm Trio", shop: "the-good-soap", price: "£11.47",
+    url: "https://the-good-soap.co.uk/products/all-three-lip-balms" },
+  { id: "good-soap-travel-tin", name: "Soap Bar with Travel Tin", shop: "the-good-soap", price: "£7.99",
+    url: "https://the-good-soap.co.uk/products/tin-and-soap-bar-combination" },
+  { id: "mark-and-fold-classic-notebook", name: "Classic Notebook, Flint", shop: "mark-and-fold", price: "£28.50",
+    url: "https://markandfold.com/products/classic-notebook-flint" },
+  { id: "moxon-karst-hardcover", name: "Karst Stone Paper Hardcover Notebook", shop: "moxon", price: "£23",
+    url: "https://www.moxon.london/products/karst-hardcover-notebook-a5" },
+  { id: "talking-tables-eucalyptus-napkins", name: "Eucalyptus Leaf Paper Napkins (100)", shop: "talking-tables", price: "£8",
+    url: "https://www.talkingtables.co.uk/products/table-kind-eucalyptus-leaf-paper-napkins-100-pack" },
+  { id: "talking-tables-partridge-napkins", name: "Partridge & Pear Long Lunch Napkins", shop: "talking-tables", price: "£6",
+    url: "https://www.talkingtables.co.uk/products/partridge-pear-long-lunch-paper-napkins-16-pack" },
+  { id: "doodlepippin-delft-tile", name: "Delft Blue and White Tile", shop: "doodlepippin", price: "£10.35",
+    url: "https://www.doodlepippin.co.uk/products/delft-kitchen-tile-mix-and-match-tiles-blue-white-patchwork-tile-6-inch-tiles-antique-style-patterned-decorative-tile-colourful-tiles" },
+  { id: "doodlepippin-tile-placemat", name: "Mixed Tile Placemat, Blue & White", shop: "doodlepippin", price: "£21",
+    url: "https://www.doodlepippin.co.uk/products/mixed-tile-design-placemat-blue-white" },
+  { id: "dave-and-dandelion-cat-ornament", name: "Watercolour Cat Portrait Ornament", shop: "dave-and-dandelion", price: "£14.95",
+    url: "https://daveanddandelion.co.uk/products/personalised-watercolour-cat-portrait-ornament" },
+  { id: "dave-and-dandelion-cat-mug", name: "Personalised Cat Mug", shop: "dave-and-dandelion", price: "£18.95",
+    url: "https://daveanddandelion.co.uk/products/personalised-cat-mug-1" },
+  { id: "scavenger-arrow-belt", name: "Webbing Belt, Arrow", shop: "scavenger", price: "£28",
+    url: "https://madebyscavenger.com/products/webbing-belt-arrow" },
+  { id: "scavenger-monkey-charm", name: "Climbing Rope Monkey Bag Charm", shop: "scavenger", price: "£35",
+    url: "https://madebyscavenger.com/products/handmade-climbing-rope-og-monkey-bag-charm-eco-friendly-unique-copy" },
+  { id: "truestart-iced-coffee-pack", name: "Iced Coffee Starter Pack", shop: "truestart", price: "£15",
+    url: "https://www.truestartcoffee.com/products/iced-coffee-starter-pack" },
+  { id: "truestart-iced-coffee-glass", name: "Iced Coffee Glass with Glass Straw", shop: "truestart", price: "£15",
+    url: "https://www.truestartcoffee.com/products/truestart-iced-coffee-glass" },
+  { id: "edmunds-espresso-martini", name: "Espresso Martini", shop: "edmunds-cocktails", price: "£34.95",
+    url: "https://edmundscocktails.co.uk/products/espresso-martini" },
+  { id: "nio-bestseller-box", name: "The Bestseller Box", shop: "nio-cocktails", price: "£39",
+    url: "https://niococktails.co.uk/products/best-seller-box" },
+  { id: "wood-row-seasonal", name: "Seasonal Collection", shop: "wood-row", price: "£13",
+    url: "https://woodrowchocolates.com/products/summer-collection" },
+  { id: "wood-row-hazelnut-bar", name: "Dark Hazelnut & Cocoa Nib Bar", shop: "wood-row", price: "£4.50",
+    url: "https://woodrowchocolates.com/products/hazelnut-cocoa-nib-snack-bar" },
+  { id: "hellenic-pomegranate-balsamic", name: "Organic Balsamic Pomegranate Cream", shop: "hellenic-deli", price: "£12",
+    url: "https://www.thehellenicdeli.com/Item/BALSAMIC-POMEGRANATE" },
+  { id: "hellenic-fir-honey", name: "Raw Vanilla Fir Honey", shop: "hellenic-deli", price: "£29",
+    url: "https://www.thehellenicdeli.com/Item/raw-vanilla-fir-honey-greece" },
+  { id: "maisie-cat-walking-tee", name: "Cat Walking T-shirt", shop: "maisie-and-murphy", price: "£20",
+    url: "https://maisieandmurphy.co.uk/products/cat-walking-t-shirt-gifts-for-cat-lovers-and-owners" },
+  { id: "maisie-spring-cat-tee", name: "Spring Cat Outline T-shirt", shop: "maisie-and-murphy", price: "£25",
+    url: "https://maisieandmurphy.co.uk/products/spring-cat-outline-t-shirt-embroidered-organic-tee-for-cat-lovers-and-owners" },
+  { id: "maisie-cat-stretching-tee", name: "Cat Stretching T-shirt", shop: "maisie-and-murphy", price: "£20",
+    url: "https://maisieandmurphy.co.uk/products/cat-stretching-t-shirt-gifts-for-cat-lovers-and-owners" },
+  { id: "maisie-cat-silhouette-sweat", name: "Embroidered Cat Silhouette Sweatshirt", shop: "maisie-and-murphy", price: "£30",
+    url: "https://maisieandmurphy.co.uk/products/embroidered-cat-silhouette-sweatshirt-gifts-for-cat-lovers-and-owners" },
+  { id: "scavenger-gecko-belt", name: "Webbing Belt, Gecko Maze", shop: "scavenger", price: "£28",
+    url: "https://madebyscavenger.com/products/webbing-belt-gecko-maze" },
+  { id: "scavenger-nut-keyring", name: "Recycled Nut Keyring", shop: "scavenger", price: "£8.50",
+    url: "https://madebyscavenger.com/products/recycled-nut-keyring" },
+  { id: "peregrine-ashton-chore", name: "Ashton Chore Jacket", shop: "peregrine", price: "£165",
+    url: "https://www.peregrineclothing.co.uk/products/ashton-chore-jacket" },
+  { id: "wawwa-roam-raglan", name: "Roam Raglan Jacket, Bracken", shop: "wawwa", price: "£195",
+    url: "https://wawwaclothing.com/products/roam-raglan-jacket-bracken" },
+  { id: "arbon-stripy-socks", name: "Alpaca Stripy Socks", shop: "arbon-socks", price: "£19.50",
+    url: "https://arbonsocks.co.uk/product/alpaca-stripy-socks/" },
+  { id: "arbon-cumbria-walker", name: "Cumbria Walker Socks", shop: "arbon-socks", price: "£19.50",
+    url: "https://arbonsocks.co.uk/product/cumbria-walker/" },
 ];

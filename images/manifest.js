@@ -5,8 +5,14 @@ const IMAGES = {
     "file": "annotate-create.png",
     "fit": "contain"
   },
+  "arbon-cumbria-walker": {
+    "file": "products/arbon-cumbria-walker.jpg"
+  },
   "arbon-socks": {
     "file": "arbon-socks.jpg"
+  },
+  "arbon-stripy-socks": {
+    "file": "products/arbon-stripy-socks.jpg"
   },
   "cake-coffee": {
     "file": "cake-coffee.jpg"
@@ -26,11 +32,27 @@ const IMAGES = {
   "dave-and-dandelion": {
     "file": "dave-and-dandelion.jpg"
   },
+  "dave-and-dandelion-cat-mug": {
+    "file": "products/dave-and-dandelion-cat-mug.jpg"
+  },
+  "dave-and-dandelion-cat-ornament": {
+    "file": "products/dave-and-dandelion-cat-ornament.jpg"
+  },
   "dirtbags-rope-belt": {
     "file": "dirtbags-rope-belt.jpg"
   },
   "ditchling-soaps": {
     "file": "ditchling-soaps.jpg"
+  },
+  "doodlepippin": {
+    "file": "doodlepippin.jpg",
+    "fit": "contain"
+  },
+  "doodlepippin-delft-tile": {
+    "file": "products/doodlepippin-delft-tile.jpg"
+  },
+  "doodlepippin-tile-placemat": {
+    "file": "products/doodlepippin-tile-placemat.jpg"
   },
   "dutch-tile-project": {
     "file": "dutch-tile-project.png",
@@ -40,8 +62,23 @@ const IMAGES = {
     "file": "edmunds-cocktails.jpg",
     "fit": "contain"
   },
+  "edmunds-espresso-martini": {
+    "file": "products/edmunds-espresso-martini.jpg"
+  },
   "elvis-and-kresse": {
     "file": "elvis-and-kresse.jpg"
+  },
+  "good-soap-lip-balm-trio": {
+    "file": "products/good-soap-lip-balm-trio.jpg"
+  },
+  "good-soap-rose-salt-bar": {
+    "file": "products/good-soap-rose-salt-bar.jpg"
+  },
+  "good-soap-sea-salt-trio": {
+    "file": "products/good-soap-sea-salt-trio.jpg"
+  },
+  "good-soap-travel-tin": {
+    "file": "products/good-soap-travel-tin.jpg"
   },
   "gra-chocolates": {
     "file": "gra-chocolates.jpg"
@@ -49,6 +86,12 @@ const IMAGES = {
   "hellenic-deli": {
     "file": "hellenic-deli.webp",
     "fit": "contain"
+  },
+  "hellenic-fir-honey": {
+    "file": "products/hellenic-fir-honey.webp"
+  },
+  "hellenic-pomegranate-balsamic": {
+    "file": "products/hellenic-pomegranate-balsamic.webp"
   },
   "jack-clementine": {
     "file": "jack-clementine.jpg"
@@ -64,9 +107,24 @@ const IMAGES = {
   "maisie-and-murphy": {
     "file": "maisie-and-murphy.jpg"
   },
+  "maisie-cat-silhouette-sweat": {
+    "file": "products/maisie-cat-silhouette-sweat.jpg"
+  },
+  "maisie-cat-stretching-tee": {
+    "file": "products/maisie-cat-stretching-tee.jpg"
+  },
+  "maisie-cat-walking-tee": {
+    "file": "products/maisie-cat-walking-tee.jpg"
+  },
+  "maisie-spring-cat-tee": {
+    "file": "products/maisie-spring-cat-tee.jpg"
+  },
   "mark-and-fold": {
     "file": "mark-and-fold.png",
     "fit": "contain"
+  },
+  "mark-and-fold-classic-notebook": {
+    "file": "products/mark-and-fold-classic-notebook.jpg"
   },
   "melt-chocolates": {
     "file": "melt-chocolates.jpg"
@@ -74,8 +132,14 @@ const IMAGES = {
   "moxon": {
     "file": "moxon.jpg"
   },
+  "moxon-karst-hardcover": {
+    "file": "products/moxon-karst-hardcover.jpg"
+  },
   "neon-magpie": {
     "file": "neon-magpie.jpg"
+  },
+  "nio-bestseller-box": {
+    "file": "products/nio-bestseller-box.jpg"
   },
   "nio-cocktails": {
     "file": "nio-cocktails.png",
@@ -85,7 +149,10 @@ const IMAGES = {
     "file": "pavilion-paper.jpg"
   },
   "peregrine": {
-    "file": "peregrine.png"
+    "file": "peregrine.jpg"
+  },
+  "peregrine-ashton-chore": {
+    "file": "products/peregrine-ashton-chore.jpg"
   },
   "rila": {
     "file": "rila.jpg"
@@ -94,12 +161,30 @@ const IMAGES = {
     "file": "scavenger.png",
     "fit": "contain"
   },
+  "scavenger-arrow-belt": {
+    "file": "products/scavenger-arrow-belt.jpg"
+  },
+  "scavenger-gecko-belt": {
+    "file": "products/scavenger-gecko-belt.jpg"
+  },
+  "scavenger-monkey-charm": {
+    "file": "products/scavenger-monkey-charm.jpg"
+  },
+  "scavenger-nut-keyring": {
+    "file": "products/scavenger-nut-keyring.jpg"
+  },
   "shawncraft": {
     "file": "shawncraft.jpg"
   },
   "talking-tables": {
     "file": "talking-tables.jpg",
     "fit": "contain"
+  },
+  "talking-tables-eucalyptus-napkins": {
+    "file": "products/talking-tables-eucalyptus-napkins.jpg"
+  },
+  "talking-tables-partridge-napkins": {
+    "file": "products/talking-tables-partridge-napkins.jpg"
   },
   "the-good-soap": {
     "file": "the-good-soap.jpg"
@@ -110,6 +195,12 @@ const IMAGES = {
   "truestart": {
     "file": "truestart.jpg"
   },
+  "truestart-iced-coffee-glass": {
+    "file": "products/truestart-iced-coffee-glass.jpg"
+  },
+  "truestart-iced-coffee-pack": {
+    "file": "products/truestart-iced-coffee-pack.jpg"
+  },
   "viri-cotton": {
     "file": "viri-cotton.png",
     "fit": "contain"
@@ -118,10 +209,19 @@ const IMAGES = {
     "file": "wawwa.png",
     "fit": "contain"
   },
+  "wawwa-roam-raglan": {
+    "file": "products/wawwa-roam-raglan.jpg"
+  },
   "wild-and-myrtle": {
     "file": "wild-and-myrtle.jpg"
   },
   "wood-row": {
     "file": "wood-row.jpg"
+  },
+  "wood-row-hazelnut-bar": {
+    "file": "products/wood-row-hazelnut-bar.jpg"
+  },
+  "wood-row-seasonal": {
+    "file": "products/wood-row-seasonal.jpg"
   }
 };

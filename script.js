@@ -1,5 +1,10 @@
 const IMAGES_BY_ID = typeof IMAGES === "undefined" ? {} : IMAGES;
 const byId = new Map(SHOPS.map((shop) => [shop.id, shop]));
+const productById = new Map((typeof PRODUCTS === "undefined" ? [] : PRODUCTS).map((p) => [p.id, p]));
+
+function productsFor(shop) {
+  return (shop.products ?? []).map((id) => productById.get(id)).filter(Boolean);
+}
 
 const HASH_FOR_CAT = { all: "", gifts: "gifts", "food-drink": "food", clothing: "clothing" };
 const CAT_FOR_HASH = Object.fromEntries(Object.entries(HASH_FOR_CAT).map(([cat, hash]) => [hash, cat]));
@@ -72,15 +77,49 @@ function cardFor(shop) {
       <span class="price"></span>
     </div>
     <p class="card-blurb"></p>
+    <p class="card-try"></p>
     <span class="card-cat"></span>`;
   body.querySelector(".card-name").textContent = shop.name;
   body.querySelector(".price").textContent = shop.price;
   body.querySelector(".card-blurb").textContent = shop.blurb;
   body.querySelector(".card-cat").textContent = CATEGORIES[shop.category];
 
+  const tryLine = body.querySelector(".card-try");
+  const products = productsFor(shop);
+  if (products.length) {
+    tryLine.innerHTML = "<strong>If you like this, try:</strong> ";
+    tryLine.append(products.map((p) => p.name).join(" · "));
+  } else {
+    tryLine.remove();
+  }
+
   card.append(mediaFor(shop), body);
   card.addEventListener("click", () => openDetail(shop));
   return card;
+}
+
+// A recommended product links straight out to its page on the shop's site.
+function productCardFor(product) {
+  const shop = byId.get(product.shop);
+  const link = document.createElement("a");
+  link.className = "card product";
+  link.href = product.url;
+  link.target = "_blank";
+  link.rel = "noopener";
+  link.setAttribute("aria-label", `${product.name} from ${shop?.name ?? "the shop"}, ${product.price} (opens in a new tab)`);
+
+  const body = document.createElement("div");
+  body.className = "card-body";
+  body.innerHTML = `
+    <h4 class="card-name"></h4>
+    <p class="product-shop"></p>
+    <p class="product-price"></p>`;
+  body.querySelector(".card-name").textContent = product.name;
+  body.querySelector(".product-shop").textContent = shop?.name ?? "";
+  body.querySelector(".product-price").textContent = `${product.price} ↗`;
+
+  link.append(mediaFor(product), body);
+  return link;
 }
 
 // ---------- Grid & tabs ----------
@@ -144,6 +183,10 @@ function openDetail(shop) {
   const visit = dialog.querySelector(".visit");
   visit.href = shop.url;
   visit.setAttribute("aria-label", `Visit ${shop.name} (opens in a new tab)`);
+
+  const products = productsFor(shop);
+  dialog.querySelector(".recs").hidden = products.length === 0;
+  dialog.querySelector(".product-row").replaceChildren(...products.map(productCardFor));
 
   const similar = similarFor(shop);
   dialog.querySelector(".similar").hidden = similar.length === 0;

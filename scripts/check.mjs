@@ -1,5 +1,6 @@
-// Sanity-checks data.js: unique ids, valid categories, every `similar` id
-// exists, every manifest image is on disk, and every shop URL responds.
+// Sanity-checks data.js: unique ids, valid categories, every `similar` and
+// `products` id exists, every manifest image is on disk, and every shop and
+// product URL responds.
 //
 //   node scripts/check.mjs
 
@@ -13,6 +14,7 @@ const load = async (file, name) =>
   new Function(`${await readFile(path.join(root, file), "utf8")}; return ${name};`)();
 
 const SHOPS = await load("data.js", "SHOPS");
+const PRODUCTS = await load("data.js", "PRODUCTS");
 const CATEGORIES = await load("data.js", "CATEGORIES");
 const IMAGES = await load("images/manifest.js", "IMAGES");
 const UA =
@@ -39,8 +41,22 @@ for (const shop of SHOPS) {
   else if (!existsSync(path.join(root, "images", image.file))) problems.push(`${shop.id}: images/${image.file} missing`);
 }
 
+const productIds = new Set(PRODUCTS.map((p) => p.id));
+for (const shop of SHOPS) {
+  for (const id of shop.products ?? []) {
+    if (!productIds.has(id)) problems.push(`${shop.id}: product id "${id}" doesn't exist`);
+  }
+}
+for (const product of PRODUCTS) {
+  if (!ids.has(product.shop)) problems.push(`${product.id}: shop "${product.shop}" doesn't exist`);
+  if (!SHOPS.some((shop) => shop.products?.includes(product.id))) notes.push(`${product.id}: not recommended by any shop`);
+  const image = IMAGES[product.id];
+  if (!image) notes.push(`${product.id}: no image (initials tile shown)`);
+  else if (!existsSync(path.join(root, "images", image.file))) problems.push(`${product.id}: images/${image.file} missing`);
+}
+
 await Promise.all(
-  SHOPS.map(async (shop) => {
+  [...SHOPS, ...PRODUCTS].map(async (shop) => {
     try {
       const res = await fetch(shop.url, { headers: { "user-agent": UA }, signal: AbortSignal.timeout(20000) });
       // Etsy and Cloudflare-protected shops refuse scripts with 403 but work in a browser.
@@ -54,5 +70,5 @@ await Promise.all(
 
 notes.sort().forEach((n) => console.log(`note  ${n}`));
 problems.sort().forEach((p) => console.log(`FAIL  ${p}`));
-console.log(`\n${SHOPS.length} shops checked: ${problems.length} problem(s), ${notes.length} note(s).`);
+console.log(`\n${SHOPS.length} shops and ${PRODUCTS.length} products checked: ${problems.length} problem(s), ${notes.length} note(s).`);
 process.exitCode = problems.length ? 1 : 0;
