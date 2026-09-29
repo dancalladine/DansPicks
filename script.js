@@ -192,6 +192,10 @@ function openDetail(shop) {
   dialog.querySelector(".similar").hidden = similar.length === 0;
   dialog.querySelector(".similar-row").replaceChildren(...similar.map(cardFor));
 
+  // The pop-up shows its images straight away, so there's nothing to gain
+  // from lazy-loading them (and lazy images inside a <dialog> can stall).
+  dialog.querySelectorAll("img").forEach((img) => (img.loading = "eager"));
+
   if (!dialog.open) dialog.showModal();
   dialog.scrollTop = 0;
   visit.focus();
